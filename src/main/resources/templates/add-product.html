@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/admin">Admin</a>
+<br/>
+<p>Lägg till produkt</p>
+<form th:action="@{/save}" method="post" th:object="${product}">
+    Produkt: <input type="text" th:field="*{name}">
+    <br/>
+    Pris: <input type="text" th:field="*{price}">
+    <br/>
+    Kategori: <select name="category" th:field="*{category}">
+    <option th:each="c : ${categories}" th:value="${c}" th:text="${c}"></option>
+</select>
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

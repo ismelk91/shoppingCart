@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/admin">Admin</a>
+<br/>
+<table>
+    <thead>
+    <tr>
+        <th>Order id</th>
+        <th>Kund id</th>
+        <th>Datum</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="o: ${allorders}">
+        <td th:text="${o.id}"></td>
+        <td th:text="${o.customer.id}"></td>
+        <td th:text="${o.orderDate}"></td>
+        <td th:text="${o.shipped}"></td>
+        <td>
+            <form action="/allorders" method="post">
+                <input type="hidden" name="id" th:value="${o.id}">
+                <input type="submit" value="Märk som levererad">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Produkt</th>
+        <th>Antal</th>
+        <th>Pris</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="orderline, i : ${shoppingCart}">
+        <td th:text="${orderline.product.name}"></td>
+        <td th:text="${orderline.quantity}"></td>
+        <td th:text="${orderline.product.price}"></td>
+        <td>
+            <form action="updatecart" method="post">
+                <input type="hidden" name="index" th:value="${i.index}">
+                <input type="number" name="quantity" th:value="${orderline.quantity}">
+                <input type="submit" value="Uppdatera"></input>
+            </form>
+        <td/>
+    </tr>
+    </tbody>
+</table>
+<p>Summa: <span th:text="${totalPrice}"></span></p>
+<br/>
+<form action="/order" method="post">
+    <input type="submit" value="Beställ">
+</form>
+<br/>
+<a href="/categories">Startsida</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+<body>
+<h1>Tack för din order!</h1>
+<table>
+    <tr>
+        <th>Produkt</th>
+        <th>Antal</th>
+        <th>Pris</th>
+    </tr>
+    <tr th:each="orderline : ${customerorder}">
+        <td th:text="${orderline.product.name}"></td>
+        <td th:text="${orderline.quantity}"></td>
+        <td th:text="${orderline.product.price}"></td>
+    <tr/>
+</table>
+<p>Total belopp: <span th:text="${totalPrice}"></span></p>
+<br/>
+<a href="/categories">Startsida</a>
+</body>
+</html>
